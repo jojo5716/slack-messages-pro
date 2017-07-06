@@ -1,0 +1,36 @@
+{
+  "name": "trivago",
+  "version": "1.0.0",
+  "description": "Trivago test front end",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dist": "NODE_ENV=production webpack",
+    "lint": "eslint ."
+  },
+  "keywords": [],
+  "author": "Jonathan Rodriguez Alejos",
+  "license": "ISC",
+  "dependencies": {
+    "es6-promise": "^3.2.1",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb-base": "^4.0.0",
+    "eslint-plugin-import": "^1.10.3",
+    "eslint-plugin-react": "^5.2.2",
+    "eslint-watch": "^2.1.13",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "growl": "^1.9.2",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "mocha": "^2.5.3",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  }
+}

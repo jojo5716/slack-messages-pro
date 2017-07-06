@@ -1,0 +1,34 @@
+{
+  "name": "Slack messages",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Slack messages",
+  "homepage_url": "https://es.linkedin.com/in/jojo5716",
+
+  "content_scripts": [
+    { "run_at" :"document_end",
+      "matches": ["https://roiback.slack.com/*"],
+      "all_frames":true,
+      "js": [
+        "./dist/index.js"
+      ]
+    }
+  ],
+
+  "web_accessible_resources":[
+    "./dist/index.js",
+    "dist/page.js"
+  ],
+
+  "browser_action": {
+    "default_title": "Slack messages"
+  },
+
+  "permissions": [
+    "https://*/*",
+    "tabs",
+    "storage"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' ; object-src 'self'"
+
+}
