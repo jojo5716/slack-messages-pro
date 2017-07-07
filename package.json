@@ -4,6 +4,8 @@
   "description": "Trivago test front end",
   "main": "webpack.config.js",
   "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "predist": "npm run clean",
     "dist": "NODE_ENV=production webpack",
     "lint": "eslint ."
   },
@@ -11,7 +13,7 @@
   "author": "Jonathan Rodriguez Alejos",
   "license": "ISC",
   "dependencies": {
-    "es6-promise": "^3.2.1",
+    "es6-promise": "^3.3.1",
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {

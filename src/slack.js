@@ -1,5 +1,5 @@
 module.exports = {
-    findChatName,
+    findGroupChatName,
     getAllMessages,
     groupMessages,
     saveMessages,
@@ -8,14 +8,10 @@ module.exports = {
 }
 
 
-function findChatName() {
+function findGroupChatName() {
     let channel_name = document.getElementById('channel_title');
 
-    if (!channel_name) {
-        channel_name = document.getElementById('im_title');
-    }
-
-    return channel_name ? channel_name.textContent : '';
+    return channel_name ? channel_name.textContent : null;
 }
 
 function getAllMessages() {

@@ -1,7 +1,9 @@
+
 module.exports = {
     storageCanSave,
     saveSessionStorage,
-    readSessionStorage
+    readSessionStorage,
+    sendMessages
 }
 
 function storageCanSave() {
@@ -19,4 +21,17 @@ function readSessionStorage(key) {
         return sessionStorage.getItem(key) || []
     }
     return [];
+}
+
+function sendMessages(channelName, messages) {
+    fetch('https://localhost:5000/save/messages', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            channelName,
+            messages: [...messages]
+        })
+    });
 }

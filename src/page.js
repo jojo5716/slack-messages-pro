@@ -9,23 +9,25 @@ const messagesMap = new Map();
 history.pushState = function () {
     pushState.apply(history, arguments);
     
-    const chatName = slackApi.findChatName();
+    const groupChatName = slackApi.findGroupChatName();
+
+    if (groupChatName) {
+        const messagesFromChat = slackApi.getAllMessages();
+        
+        const messagesSavedBefore = storageApi.readSessionStorage(groupChatName);
+
+        const messagesFiltered = slackApi.filterMessagesByID(messagesFromChat, messagesSavedBefore);
+
+        const messagesGroup = slackApi.groupMessages(groupChatName, messagesFiltered);
+
+        slackApi.saveMessages(groupChatName, messagesGroup, messagesMap);
+
+        const messagesID = slackApi.getIDFromMessages(messagesFromChat);
+
+        storageApi.saveSessionStorage(groupChatName, messagesID);
+
+        storageApi.sendMessages(groupChatName, messagesGroup)
+    }
     
-    const messagesFromChat = slackApi.getAllMessages();
-    
-    const messagesSavedBefore = storageApi.readSessionStorage(chatName);
-
-    const messagesFiltered = slackApi.filterMessagesByID(messagesFromChat, messagesSavedBefore);
-    console.log(chatName);
-    console.log(messagesFromChat.length);
-    console.log(messagesFiltered.length);
-    console.log('-----')
-    const messagesGroup = slackApi.groupMessages(chatName, messagesFiltered);
-
-    slackApi.saveMessages(chatName, messagesGroup, messagesMap);
-
-    const messagesID = slackApi.getIDFromMessages(messagesFromChat);
-
-    storageApi.saveSessionStorage(chatName, messagesID);
 
 };
